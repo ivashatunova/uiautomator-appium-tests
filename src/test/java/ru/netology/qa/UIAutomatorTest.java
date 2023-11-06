@@ -9,14 +9,16 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.netology.qa.screens.AutomatorPage;
 
 public class UIAutomatorTest {
 
     private AndroidDriver driver;
     private String emptyString = " ";
+    private String text = "vervte";
 
     private AutomatorPage automatorPage;
 
@@ -54,6 +56,22 @@ public class UIAutomatorTest {
 
         automatorPage.userInput.isDisplayed();
         Assertions.assertEquals(emptyString,automatorPage.userInput.getText());
+    }
+    @Test
+    public void buttonActivityTest() {
+        automatorPage.userInput.isDisplayed();
+        automatorPage.userInput.click();
+        automatorPage.userInput.sendKeys(text);
+
+        automatorPage.buttonActivity.isDisplayed();
+        automatorPage.buttonActivity.click();
+
+        WebDriverWait wait = new WebDriverWait(driver, 1); // wait for up to 1 second
+        wait.until(ExpectedConditions.visibilityOf(automatorPage.text));
+
+        automatorPage.text.isDisplayed();
+
+        Assertions.assertEquals(text,automatorPage.text.getText());
     }
 
     @AfterEach

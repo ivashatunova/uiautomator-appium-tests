@@ -14,6 +14,12 @@ public class AutomatorPage {
     public WebElement userInput;
     @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/buttonChange")
     public WebElement buttonChange;
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/buttonActivity")
+    public WebElement buttonActivity;
+    @AndroidFindBy(id = "ru.netology.testing.uiautomator:id/text")
+    public WebElement text;
+
+
 
     private AppiumDriver driver;
 
